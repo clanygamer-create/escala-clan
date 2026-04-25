@@ -1,0 +1,1121 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Escala CLAN Y GAMER</title>
+  <style>
+    :root {
+      --bg: #eef2f7;
+      --card: #ffffff;
+      --text: #111827;
+      --muted: #64748b;
+      --border: #e2e8f0;
+      --soft: #f8fafc;
+      --dark: #111827;
+      --green: #16a34a;
+      --green-soft: #dcfce7;
+      --blue-soft: #dbeafe;
+      --blue-text: #1d4ed8;
+      --yellow-soft: #fef3c7;
+      --yellow-text: #92400e;
+      --shadow: 0 12px 30px rgba(15, 23, 42, 0.08);
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    .container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 24px;
+    }
+
+    .hero {
+      background: linear-gradient(135deg, #111827, #334155);
+      color: white;
+      border-radius: 28px;
+      padding: 28px;
+      box-shadow: var(--shadow);
+      margin-bottom: 20px;
+      display: flex;
+      gap: 20px;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+    }
+
+    .hero small {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 7px 11px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.12);
+      margin-bottom: 10px;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: 38px;
+      line-height: 1.05;
+    }
+
+    .hero p {
+      margin: 10px 0 0;
+      color: #dbe4ef;
+      max-width: 720px;
+      line-height: 1.5;
+    }
+
+    .actions {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    button {
+      border: 0;
+      background: var(--dark);
+      color: white;
+      padding: 11px 15px;
+      border-radius: 14px;
+      font-weight: 800;
+      cursor: pointer;
+      transition: transform .1s ease, opacity .1s ease;
+    }
+
+    button:hover { transform: translateY(-1px); }
+
+    button.secondary {
+      background: white;
+      color: var(--text);
+      border: 1px solid var(--border);
+    }
+
+    button.green { background: var(--green); }
+    button.light { background: rgba(255,255,255,0.14); color: white; border: 1px solid rgba(255,255,255,0.24); }
+
+    .panel {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      padding: 20px;
+      box-shadow: var(--shadow);
+      margin-bottom: 20px;
+    }
+
+    .panel-title {
+      font-weight: 900;
+      font-size: 18px;
+      margin: 0 0 14px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .controls {
+      display: grid;
+      grid-template-columns: repeat(6, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    label {
+      display: flex;
+      flex-direction: column;
+      gap: 7px;
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 800;
+    }
+
+    input, select {
+      width: 100%;
+      border: 1px solid var(--border);
+      background: white;
+      color: var(--text);
+      border-radius: 14px;
+      padding: 10px 12px;
+      font-size: 14px;
+      outline: none;
+    }
+
+    input:focus, select:focus {
+      border-color: #94a3b8;
+      box-shadow: 0 0 0 3px rgba(148,163,184,.2);
+    }
+
+    .span-2 { grid-column: span 2; }
+    .span-3 { grid-column: span 3; }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 14px;
+      margin-bottom: 20px;
+    }
+
+    .metric {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 22px;
+      padding: 18px;
+      box-shadow: var(--shadow);
+    }
+
+    .metric small {
+      color: var(--muted);
+      display: block;
+      margin-bottom: 6px;
+      font-weight: 700;
+    }
+
+    .metric strong {
+      font-size: 20px;
+      display: block;
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: 1fr 330px;
+      gap: 20px;
+      align-items: start;
+    }
+
+    .day-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      padding: 18px;
+      box-shadow: var(--shadow);
+      margin-bottom: 14px;
+    }
+
+    .day-card.today {
+      border-color: #111827;
+      box-shadow: 0 0 0 3px rgba(17, 24, 39, .08), var(--shadow);
+    }
+
+    .day-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 14px;
+      flex-wrap: wrap;
+    }
+
+    .weekday {
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: .05em;
+    }
+
+    .date {
+      font-size: 24px;
+      font-weight: 900;
+      margin-top: 3px;
+    }
+
+    .badges {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    .badge {
+      display: inline-block;
+      background: #e5e7eb;
+      color: #374151;
+      border-radius: 999px;
+      padding: 7px 12px;
+      font-size: 13px;
+      font-weight: 800;
+    }
+
+    .badge.today-badge {
+      background: var(--green-soft);
+      color: #166534;
+    }
+
+    .unit {
+      background: var(--soft);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 14px;
+      margin-top: 10px;
+    }
+
+    .unit-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 12px;
+      flex-wrap: wrap;
+    }
+
+    .unit-title {
+      font-weight: 900;
+    }
+
+    .hour-pill {
+      background: white;
+      color: var(--muted);
+      border-radius: 999px;
+      padding: 6px 10px;
+      font-size: 12px;
+      font-weight: 800;
+      border: 1px solid var(--border);
+    }
+
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 9px;
+    }
+
+    .person {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 10px;
+    }
+
+    .person.off {
+      background: #f1f5f9;
+      color: var(--muted);
+    }
+
+    .person-name {
+      font-weight: 900;
+      margin-bottom: 4px;
+    }
+
+    .person-role {
+      color: var(--muted);
+      font-size: 12px;
+      margin-bottom: 7px;
+    }
+
+    .person-hour {
+      color: #475569;
+      font-size: 12px;
+      font-weight: 800;
+    }
+
+    .empty {
+      background: white;
+      border: 1px dashed #cbd5e1;
+      color: var(--muted);
+      border-radius: 14px;
+      padding: 12px;
+      font-size: 14px;
+    }
+
+    .side {
+      position: sticky;
+      top: 14px;
+      display: grid;
+      gap: 14px;
+    }
+
+    .summary {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      padding: 18px;
+      box-shadow: var(--shadow);
+    }
+
+    .summary h2 {
+      margin: 0 0 14px;
+      font-size: 22px;
+    }
+
+    .summary-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 10px;
+      margin-bottom: 8px;
+      background: white;
+      font-size: 14px;
+    }
+
+    .summary-count {
+      background: var(--soft);
+      color: var(--muted);
+      border-radius: 999px;
+      padding: 5px 8px;
+      font-size: 12px;
+      font-weight: 900;
+      white-space: nowrap;
+    }
+
+    .note {
+      background: var(--soft);
+      color: var(--muted);
+      border-radius: 16px;
+      padding: 12px;
+      font-size: 12px;
+      line-height: 1.5;
+      margin-top: 14px;
+    }
+
+    .status {
+      display: none;
+      margin-top: 14px;
+      padding: 12px;
+      border-radius: 16px;
+      font-size: 14px;
+      font-weight: 800;
+    }
+
+    .status.ok {
+      display: block;
+      background: var(--green-soft);
+      color: #166534;
+    }
+
+    .status.warn {
+      display: block;
+      background: var(--yellow-soft);
+      color: var(--yellow-text);
+    }
+
+    .view-only .admin-only {
+      display: none !important;
+    }
+
+    .public-info {
+      display: none;
+      background: var(--blue-soft);
+      color: var(--blue-text);
+      border-radius: 16px;
+      padding: 12px;
+      font-size: 14px;
+      font-weight: 700;
+      margin-bottom: 20px;
+    }
+
+    .view-only .public-info {
+      display: block;
+    }
+
+    .share-box {
+      display: grid;
+      gap: 10px;
+    }
+
+    .share-box textarea {
+      min-height: 82px;
+      resize: vertical;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 10px;
+      font-size: 12px;
+      width: 100%;
+      color: var(--text);
+    }
+
+    @media (max-width: 1000px) {
+      .controls, .cards, .layout {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .layout {
+        display: block;
+      }
+
+      .side {
+        position: static;
+        margin-top: 18px;
+      }
+
+      .team-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (max-width: 650px) {
+      .container { padding: 14px; }
+      .hero { padding: 20px; }
+      h1 { font-size: 30px; }
+      .controls, .cards { grid-template-columns: 1fr; }
+      .span-2, .span-3 { grid-column: span 1; }
+      .team-grid { grid-template-columns: 1fr; }
+      .actions { justify-content: flex-start; }
+      button { width: 100%; }
+    }
+
+    @media print {
+      body { background: white; }
+      .actions, .admin-only, .panel { display: none !important; }
+      .hero, .metric, .day-card, .summary { box-shadow: none; }
+      .layout { display: block; }
+      .side { display: none; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container" id="pageRoot">
+    <section class="hero">
+      <div>
+        <small>📅 Escala automática CLAN Y GAMER</small>
+        <h1>Escala de Trabalho</h1>
+        <p>
+          Página web simples para gerar, salvar, consultar e compartilhar a escala das unidades Sumaúma e Adrianópolis.
+        </p>
+      </div>
+
+      <div class="actions">
+        <button class="green admin-only" onclick="saveSchedule()">Salvar escala</button>
+        <button class="light admin-only" onclick="generateMonth()">Gerar escala do mês</button>
+        <button class="light admin-only" onclick="copyShareLink()">Copiar link do time</button>
+        <button class="light" onclick="window.print()">Imprimir</button>
+      </div>
+    </section>
+
+    <div class="public-info">
+      Modo visualização do time. Os controles de edição ficam ocultos, mas a consulta por funcionário continua disponível.
+    </div>
+
+    <section class="panel admin-only">
+      <div class="panel-title">
+        <span>Configurações da escala</span>
+        <button class="secondary" onclick="resetDefaults()">Restaurar padrão</button>
+      </div>
+
+      <div class="controls">
+        <label>
+          Mês
+          <select id="month" onchange="handleMonthChange()"></select>
+        </label>
+
+        <label>
+          Ano
+          <input id="year" type="number" onchange="handleYearChange()" />
+        </label>
+
+        <label class="span-2">
+          Data de referência 12x36
+          <input id="referenceDate" type="date" onchange="render()" />
+        </label>
+
+        <label class="span-2">
+          Auxiliar auxiliar técnico de referência
+          <select id="referenceTech" onchange="render()">
+            <option>Hannyel Miranda</option>
+            <option>Luan Vinicius</option>
+          </select>
+        </label>
+
+        <label class="span-2">
+          Domingo de folga do Felipe
+          <select id="felipeOffSunday" onchange="render()"></select>
+        </label>
+
+        <label class="span-2">
+          Visualizar unidade
+          <select id="unitFilter" onchange="render()">
+            <option>Todas</option>
+            <option>Sumaúma</option>
+            <option>Adrianópolis</option>
+          </select>
+        </label>
+
+        <label class="span-2">
+          Buscar funcionário
+          <input id="searchAdmin" type="text" placeholder="Ex.: Hannyel, Felipe, Rayane..." oninput="syncSearchFromAdmin()" />
+        </label>
+      </div>
+
+      <div id="status" class="status"></div>
+    </section>
+
+    <section class="panel">
+      <div class="panel-title">
+        <span>Consulta rápida</span>
+      </div>
+
+      <div class="controls">
+        <label class="span-3">
+          Buscar funcionário
+          <input id="searchPublic" type="text" placeholder="Digite o nome do funcionário..." oninput="syncSearchFromPublic()" />
+        </label>
+
+        <label class="span-3">
+          Filtrar unidade
+          <select id="unitFilterPublic" onchange="syncUnitFromPublic()">
+            <option>Todas</option>
+            <option>Sumaúma</option>
+            <option>Adrianópolis</option>
+          </select>
+        </label>
+      </div>
+    </section>
+
+    <section class="cards">
+      <div class="metric">
+        <small>Período</small>
+        <strong id="periodMetric">-</strong>
+      </div>
+
+      <div class="metric">
+        <small>Referência 12x36</small>
+        <strong id="referenceMetric">-</strong>
+      </div>
+
+      <div class="metric">
+        <small>Folga Felipe</small>
+        <strong id="felipeMetric">-</strong>
+      </div>
+
+      <div class="metric">
+        <small>Dias no mês</small>
+        <strong id="daysMetric">-</strong>
+      </div>
+    </section>
+
+    <main class="layout">
+      <div id="schedule"></div>
+
+      <aside class="side">
+        <section class="summary">
+          <h2>Resumo do mês</h2>
+          <div id="summary"></div>
+          <div class="note">
+            O resumo conta dias escalados. Não calcula banco de horas nem total exato de horas trabalhadas.
+          </div>
+        </section>
+
+        <section class="summary admin-only">
+          <h2>Compartilhamento</h2>
+          <div class="share-box">
+            <button class="secondary" onclick="copyShareLink()">Copiar link de visualização</button>
+            <textarea id="shareLink" readonly placeholder="O link de visualização aparecerá aqui."></textarea>
+          </div>
+          <div class="note">
+            Use esse link para o time visualizar a escala com os controles de edição ocultos.
+          </div>
+        </section>
+      </aside>
+    </main>
+  </div>
+
+  <script>
+    const STORAGE_KEY = "clanEscalaConfigV2";
+
+    const MONTHS = [
+      "Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho",
+      "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"
+    ];
+
+    const WEEKDAYS = ["Dom", "Seg", "Ter", "Qua", "Qui", "Sex", "Sáb"];
+    const TECHS = ["Hannyel Miranda", "Luan Vinicius"];
+
+    const DEFAULT_CONFIG = {
+      month: 3,
+      year: 2026,
+      referenceDate: "2026-04-25",
+      referenceTech: "Hannyel Miranda",
+      felipeOffSunday: "2026-04-26",
+      unitFilter: "Todas",
+      search: ""
+    };
+
+    function pad(value) {
+      return String(value).padStart(2, "0");
+    }
+
+    function toISODate(date) {
+      return `${date.getFullYear()}-${pad(date.getMonth() + 1)}-${pad(date.getDate())}`;
+    }
+
+    function toBRDate(date) {
+      return `${pad(date.getDate())}/${pad(date.getMonth() + 1)}/${date.getFullYear()}`;
+    }
+
+    function parseISODate(value) {
+      const [year, month, day] = value.split("-").map(Number);
+      return new Date(year, month - 1, day);
+    }
+
+    function diffDays(dateA, dateB) {
+      const oneDay = 24 * 60 * 60 * 1000;
+      const a = new Date(dateA.getFullYear(), dateA.getMonth(), dateA.getDate());
+      const b = new Date(dateB.getFullYear(), dateB.getMonth(), dateB.getDate());
+      return Math.round((a - b) / oneDay);
+    }
+
+    function getDaysInMonth(year, monthIndex) {
+      const total = new Date(year, monthIndex + 1, 0).getDate();
+      return Array.from({ length: total }, (_, index) => new Date(year, monthIndex, index + 1));
+    }
+
+    function isSunday(date) { return date.getDay() === 0; }
+    function isSaturday(date) { return date.getDay() === 6; }
+    function isWeekday(date) { return date.getDay() >= 1 && date.getDay() <= 5; }
+
+    function getTodayISO() {
+      const now = new Date();
+      return toISODate(now);
+    }
+
+    function getTechnicalShift(date, referenceDate, referenceTech) {
+      const days = diffDays(date, referenceDate);
+      const normalized = ((days % 2) + 2) % 2;
+      const referenceIndex = TECHS.indexOf(referenceTech);
+      const techIndex = normalized === 0 ? referenceIndex : 1 - referenceIndex;
+      return TECHS[techIndex];
+    }
+
+    function getStoreHours(unit, date) {
+      if (unit === "Sumaúma") {
+        return isSunday(date) ? "14h às 21h" : "10h às 22h";
+      }
+
+      return isSunday(date) ? "Fechado" : "9h às 17h20";
+    }
+
+    function getSumaumaTeam(date, referenceDate, referenceTech, felipeOffSunday) {
+      const team = [];
+      const day = date.getDay();
+      const dateIso = toISODate(date);
+      const felipeWorksToday = day >= 2 && day <= 6 || day === 0;
+      const felipeOffToday = dateIso === felipeOffSunday;
+
+      team.push({
+        name: getTechnicalShift(date, referenceDate, referenceTech),
+        role: "Auxiliar Técnico 12x36",
+        hours: isSunday(date) ? "14h às 21h" : "10h às 22h"
+      });
+
+      if (felipeWorksToday && !felipeOffToday) {
+        team.push({
+          name: "Felipe Rodrigues",
+          role: "Vendedor",
+          hours: isSunday(date) ? "14h às 21h" : "14h às 22h"
+        });
+      }
+
+      if (felipeOffToday) {
+        team.push({
+          name: "Felipe Rodrigues",
+          role: "Vendedor",
+          hours: "Folga de domingo"
+        });
+      }
+
+      if (isWeekday(date)) {
+        team.push({
+          name: "Tônia",
+          role: "Apoio",
+          hours: "10h às 14h"
+        });
+      }
+
+      return team;
+    }
+
+    function getAdrianopolisTeam(date) {
+      if (isSunday(date)) {
+        return [];
+      }
+
+      return [
+        { name: "Rayane Cristina", role: "Vendedora", hours: "9h às 17h20" },
+        { name: "Thayna Gama", role: "Auxiliar Técnico", hours: "9h às 17h20" },
+        { name: "Rodrigo Prestes", role: "Auxiliar Técnico", hours: "9h às 17h20" }
+      ];
+    }
+
+    function buildSchedule() {
+      const config = getCurrentConfig();
+      const referenceDate = parseISODate(config.referenceDate);
+
+      return getDaysInMonth(config.year, config.month).map(date => ({
+        date,
+        iso: toISODate(date),
+        br: toBRDate(date),
+        weekday: WEEKDAYS[date.getDay()],
+        units: [
+          {
+            unit: "Sumaúma",
+            hours: getStoreHours("Sumaúma", date),
+            team: getSumaumaTeam(date, referenceDate, config.referenceTech, config.felipeOffSunday)
+          },
+          {
+            unit: "Adrianópolis",
+            hours: getStoreHours("Adrianópolis", date),
+            team: getAdrianopolisTeam(date)
+          }
+        ]
+      }));
+    }
+
+    function getMonthSundays(year, monthIndex) {
+      return getDaysInMonth(year, monthIndex).filter(isSunday);
+    }
+
+    function firstSundayOfMonth(year, monthIndex) {
+      const sundays = getMonthSundays(year, monthIndex);
+      return sundays[0] ? toISODate(sundays[0]) : "";
+    }
+
+    function updateSundayOptions(selectedValue) {
+      const year = Number(document.getElementById("year").value);
+      const monthIndex = Number(document.getElementById("month").value);
+      const select = document.getElementById("felipeOffSunday");
+      const sundays = getMonthSundays(year, monthIndex);
+
+      select.innerHTML = "";
+
+      sundays.forEach(date => {
+        const option = document.createElement("option");
+        option.value = toISODate(date);
+        option.textContent = toBRDate(date);
+        select.appendChild(option);
+      });
+
+      const values = sundays.map(toISODate);
+
+      if (selectedValue && values.includes(selectedValue)) {
+        select.value = selectedValue;
+      } else {
+        select.value = firstSundayOfMonth(year, monthIndex);
+      }
+    }
+
+    function getCurrentConfig() {
+      return {
+        month: Number(document.getElementById("month").value),
+        year: Number(document.getElementById("year").value),
+        referenceDate: document.getElementById("referenceDate").value,
+        referenceTech: document.getElementById("referenceTech").value,
+        felipeOffSunday: document.getElementById("felipeOffSunday").value,
+        unitFilter: document.getElementById("unitFilter").value,
+        search: document.getElementById("searchPublic").value.trim()
+      };
+    }
+
+    function setConfig(config) {
+      document.getElementById("month").value = String(config.month);
+      document.getElementById("year").value = String(config.year);
+      document.getElementById("referenceDate").value = config.referenceDate;
+      document.getElementById("referenceTech").value = config.referenceTech;
+      updateSundayOptions(config.felipeOffSunday);
+      document.getElementById("felipeOffSunday").value = config.felipeOffSunday;
+      document.getElementById("unitFilter").value = config.unitFilter || "Todas";
+      document.getElementById("unitFilterPublic").value = config.unitFilter || "Todas";
+      document.getElementById("searchAdmin").value = config.search || "";
+      document.getElementById("searchPublic").value = config.search || "";
+    }
+
+    function saveSchedule() {
+      const config = getCurrentConfig();
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(config));
+      showStatus("Escala salva neste navegador com sucesso.", "ok");
+      updateShareLink();
+      render();
+    }
+
+    function loadSavedConfig() {
+      const params = new URLSearchParams(window.location.search);
+      const fromUrl = {
+        month: params.has("m") ? Number(params.get("m")) : null,
+        year: params.has("y") ? Number(params.get("y")) : null,
+        referenceDate: params.get("ref"),
+        referenceTech: params.get("tech"),
+        felipeOffSunday: params.get("folga"),
+        unitFilter: params.get("unit") || "Todas",
+        search: ""
+      };
+
+      if (fromUrl.month !== null && fromUrl.year && fromUrl.referenceDate && fromUrl.referenceTech && fromUrl.felipeOffSunday) {
+        return {
+          ...DEFAULT_CONFIG,
+          ...fromUrl
+        };
+      }
+
+      const saved = localStorage.getItem(STORAGE_KEY);
+      if (!saved) return DEFAULT_CONFIG;
+
+      try {
+        return { ...DEFAULT_CONFIG, ...JSON.parse(saved) };
+      } catch {
+        return DEFAULT_CONFIG;
+      }
+    }
+
+    function generateMonth() {
+      const year = Number(document.getElementById("year").value);
+      const month = Number(document.getElementById("month").value);
+      updateSundayOptions(document.getElementById("felipeOffSunday").value || firstSundayOfMonth(year, month));
+      render();
+      showStatus("Escala do mês gerada na tela. Clique em Salvar escala para manter esta configuração no navegador.", "warn");
+    }
+
+    function handleMonthChange() {
+      const year = Number(document.getElementById("year").value);
+      const month = Number(document.getElementById("month").value);
+      updateSundayOptions(firstSundayOfMonth(year, month));
+      render();
+    }
+
+    function handleYearChange() {
+      const year = Number(document.getElementById("year").value);
+      const month = Number(document.getElementById("month").value);
+      updateSundayOptions(firstSundayOfMonth(year, month));
+      render();
+    }
+
+    function resetDefaults() {
+      setConfig(DEFAULT_CONFIG);
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(DEFAULT_CONFIG));
+      showStatus("Configuração padrão restaurada.", "ok");
+      render();
+    }
+
+    function getFilteredSchedule(schedule) {
+      const config = getCurrentConfig();
+      const search = config.search.toLowerCase();
+
+      return schedule
+        .map(day => ({
+          ...day,
+          units: day.units
+            .filter(unit => config.unitFilter === "Todas" || unit.unit === config.unitFilter)
+            .map(unit => ({
+              ...unit,
+              team: search
+                ? unit.team.filter(person => `${person.name} ${person.role} ${person.hours}`.toLowerCase().includes(search))
+                : unit.team
+            }))
+            .filter(unit => !search || unit.team.length > 0)
+        }))
+        .filter(day => day.units.length > 0);
+    }
+
+    function personHTML(person) {
+      const off = person.hours.toLowerCase().includes("folga");
+      return `
+        <div class="person ${off ? "off" : ""}">
+          <div class="person-name">${person.name}</div>
+          <div class="person-role">${person.role}</div>
+          <div class="person-hour">🕒 ${person.hours}</div>
+        </div>
+      `;
+    }
+
+    function unitHTML(unit) {
+      const team = unit.team.length
+        ? `<div class="team-grid">${unit.team.map(personHTML).join("")}</div>`
+        : `<div class="empty">Fechado / sem escala</div>`;
+
+      return `
+        <div class="unit">
+          <div class="unit-head">
+            <div class="unit-title">🏬 ${unit.unit}</div>
+            <div class="hour-pill">${unit.hours}</div>
+          </div>
+          ${team}
+        </div>
+      `;
+    }
+
+    function dayHTML(day) {
+      const todayISO = getTodayISO();
+      const isToday = day.iso === todayISO;
+
+      const badges = [
+        isToday ? `<span class="badge today-badge">Hoje</span>` : "",
+        isSunday(day.date) ? `<span class="badge">Domingo</span>` : "",
+        isSaturday(day.date) ? `<span class="badge">Sábado</span>` : ""
+      ].filter(Boolean).join("");
+
+      return `
+        <article class="day-card ${isToday ? "today" : ""}">
+          <div class="day-head">
+            <div>
+              <div class="weekday">${day.weekday}</div>
+              <div class="date">${day.br}</div>
+            </div>
+            <div class="badges">${badges}</div>
+          </div>
+          ${day.units.map(unitHTML).join("")}
+        </article>
+      `;
+    }
+
+    function updateMetrics(schedule) {
+      const config = getCurrentConfig();
+      const referenceDate = parseISODate(config.referenceDate);
+      document.getElementById("periodMetric").textContent = `${MONTHS[config.month]} / ${config.year}`;
+      document.getElementById("referenceMetric").textContent = `${toBRDate(referenceDate)} — ${config.referenceTech}`;
+      document.getElementById("felipeMetric").textContent = config.felipeOffSunday ? toBRDate(parseISODate(config.felipeOffSunday)) : "-";
+      document.getElementById("daysMetric").textContent = schedule.length;
+    }
+
+    function updateSummary(schedule) {
+      const counts = {};
+
+      schedule.forEach(day => {
+        day.units.forEach(unit => {
+          unit.team.forEach(person => {
+            if (person.hours.toLowerCase().includes("folga")) return;
+            counts[person.name] = (counts[person.name] || 0) + 1;
+          });
+        });
+      });
+
+      const rows = Object.entries(counts)
+        .sort((a, b) => a[0].localeCompare(b[0]))
+        .map(([name, count]) => `
+          <div class="summary-row">
+            <strong>${name}</strong>
+            <span class="summary-count">${count} dia(s)</span>
+          </div>
+        `)
+        .join("");
+
+      document.getElementById("summary").innerHTML = rows || "<div class='empty'>Nenhum resultado.</div>";
+    }
+
+    function render() {
+      const schedule = buildSchedule();
+      const filtered = getFilteredSchedule(schedule);
+
+      document.getElementById("schedule").innerHTML = filtered.map(dayHTML).join("") || "<div class='empty'>Nenhum resultado encontrado.</div>";
+
+      updateMetrics(schedule);
+      updateSummary(schedule);
+      updateShareLink();
+    }
+
+    function showStatus(message, type) {
+      const status = document.getElementById("status");
+      status.textContent = message;
+      status.className = `status ${type}`;
+      setTimeout(() => {
+        status.className = "status";
+      }, 5000);
+    }
+
+    function syncSearchFromAdmin() {
+      document.getElementById("searchPublic").value = document.getElementById("searchAdmin").value;
+      render();
+    }
+
+    function syncSearchFromPublic() {
+      document.getElementById("searchAdmin").value = document.getElementById("searchPublic").value;
+      render();
+    }
+
+    function syncUnitFromPublic() {
+      document.getElementById("unitFilter").value = document.getElementById("unitFilterPublic").value;
+      render();
+    }
+
+    function updateShareLink() {
+      const config = getCurrentConfig();
+      const url = new URL(window.location.href);
+      url.searchParams.set("view", "1");
+      url.searchParams.set("m", String(config.month));
+      url.searchParams.set("y", String(config.year));
+      url.searchParams.set("ref", config.referenceDate);
+      url.searchParams.set("tech", config.referenceTech);
+      url.searchParams.set("folga", config.felipeOffSunday);
+      url.searchParams.set("unit", config.unitFilter);
+
+      document.getElementById("shareLink").value = url.toString();
+    }
+
+    async function copyShareLink() {
+      updateShareLink();
+      const link = document.getElementById("shareLink").value;
+
+      try {
+        await navigator.clipboard.writeText(link);
+        showStatus("Link de visualização copiado.", "ok");
+      } catch {
+        document.getElementById("shareLink").select();
+        showStatus("Não consegui copiar automaticamente. Selecione e copie o link no campo de compartilhamento.", "warn");
+      }
+    }
+
+    function exportCSV() {
+      const schedule = buildSchedule();
+      const config = getCurrentConfig();
+      const rows = [["Data", "Dia", "Unidade", "Funcionário", "Função", "Horário"]];
+
+      schedule.forEach(day => {
+        day.units
+          .filter(unit => config.unitFilter === "Todas" || unit.unit === config.unitFilter)
+          .forEach(unit => {
+            if (unit.team.length === 0) {
+              rows.push([day.br, day.weekday, unit.unit, "Fechado", "-", unit.hours]);
+            } else {
+              unit.team.forEach(person => rows.push([day.br, day.weekday, unit.unit, person.name, person.role, person.hours]));
+            }
+          });
+      });
+
+      const csv = rows.map(row => row.map(cell => `"${String(cell).replaceAll('"', '""')}"`).join(";")).join("\n");
+      const blob = new Blob([csv], { type: "text/csv;charset=utf-8;" });
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement("a");
+
+      link.href = url;
+      link.download = "escala-clan-y-gamer.csv";
+      link.click();
+
+      URL.revokeObjectURL(url);
+    }
+
+    function initMonthOptions() {
+      const monthSelect = document.getElementById("month");
+      monthSelect.innerHTML = "";
+      MONTHS.forEach((month, index) => {
+        const option = document.createElement("option");
+        option.value = index;
+        option.textContent = month;
+        monthSelect.appendChild(option);
+      });
+    }
+
+    function init() {
+      initMonthOptions();
+
+      const config = loadSavedConfig();
+      setConfig(config);
+
+      const params = new URLSearchParams(window.location.search);
+      if (params.get("view") === "1") {
+        document.body.classList.add("view-only");
+      }
+
+      render();
+    }
+
+    init();
+  </script>
+</body>
+</html>
