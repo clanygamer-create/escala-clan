@@ -519,7 +519,7 @@
         </label>
 
         <label class="span-2">
-          Técnico de referência
+          Auxiliar auxiliar técnico de referência
           <select id="referenceTech" onchange="render()">
             <option>Hannyel Miranda</option>
             <option>Luan Vinicius</option>
@@ -703,7 +703,7 @@
 
       team.push({
         name: getTechnicalShift(date, referenceDate, referenceTech),
-        role: "Técnico 12x36",
+        role: "Auxiliar Técnico 12x36",
         hours: isSunday(date) ? "14h às 21h" : "10h às 22h"
       });
 
@@ -725,8 +725,8 @@
 
       if (isWeekday(date)) {
         team.push({
-          name: "Tonia",
-          role: "Apoio/Vendas",
+          name: "Tônia",
+          role: "Apoio",
           hours: "10h às 14h"
         });
       }
@@ -740,9 +740,9 @@
       }
 
       return [
-        { name: "Rayane Cristina", role: "Loja Adrianópolis", hours: "9h às 17h20" },
-        { name: "Thayna Gama", role: "Loja Adrianópolis", hours: "9h às 17h20" },
-        { name: "Rodrigo Prestes", role: "Loja Adrianópolis", hours: "9h às 17h20" }
+        { name: "Rayane Cristina", role: "Vendedora", hours: "9h às 17h20" },
+        { name: "Thayna Gama", role: "Auxiliar Técnico", hours: "9h às 17h20" },
+        { name: "Rodrigo Prestes", role: "Auxiliar Técnico", hours: "9h às 17h20" }
       ];
     }
 
@@ -1119,3 +1119,4 @@
   </script>
 </body>
 </html>
+
