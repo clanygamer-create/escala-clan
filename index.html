@@ -1,0 +1,1714 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Escala CLAN Y GAMER - Padrão Visual</title>
+  <style>
+    :root {
+      --bg: #eef2f7;
+      --card: #ffffff;
+      --text: #111827;
+      --muted: #64748b;
+      --border: #e2e8f0;
+      --soft: #f8fafc;
+      --dark: #111827;
+      --green: #16a34a;
+      --green-soft: #dcfce7;
+      --blue-soft: #dbeafe;
+      --blue-text: #1d4ed8;
+      --yellow-soft: #fef3c7;
+      --yellow-text: #92400e;
+      --shadow: 0 12px 30px rgba(15, 23, 42, 0.08);
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    .container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 24px;
+    }
+
+    .hero {
+      background: linear-gradient(135deg, #111827, #334155);
+      color: white;
+      border-radius: 28px;
+      padding: 28px;
+      box-shadow: var(--shadow);
+      margin-bottom: 20px;
+      display: flex;
+      gap: 20px;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+    }
+
+    .hero small {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 7px 11px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.12);
+      margin-bottom: 10px;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: 38px;
+      line-height: 1.05;
+    }
+
+    .hero p {
+      margin: 10px 0 0;
+      color: #dbe4ef;
+      max-width: 720px;
+      line-height: 1.5;
+    }
+
+    .actions {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    button {
+      border: 0;
+      background: var(--dark);
+      color: white;
+      padding: 11px 15px;
+      border-radius: 14px;
+      font-weight: 800;
+      cursor: pointer;
+      transition: transform .1s ease, opacity .1s ease;
+    }
+
+    button:hover { transform: translateY(-1px); }
+
+    button.secondary {
+      background: white;
+      color: var(--text);
+      border: 1px solid var(--border);
+    }
+
+    button.green { background: var(--green); }
+    button.light { background: rgba(255,255,255,0.14); color: white; border: 1px solid rgba(255,255,255,0.24); }
+
+    .panel {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      padding: 20px;
+      box-shadow: var(--shadow);
+      margin-bottom: 20px;
+    }
+
+    .panel-title {
+      font-weight: 900;
+      font-size: 18px;
+      margin: 0 0 14px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .controls {
+      display: grid;
+      grid-template-columns: repeat(6, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    label {
+      display: flex;
+      flex-direction: column;
+      gap: 7px;
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 800;
+    }
+
+    input, select {
+      width: 100%;
+      border: 1px solid var(--border);
+      background: white;
+      color: var(--text);
+      border-radius: 14px;
+      padding: 10px 12px;
+      font-size: 14px;
+      outline: none;
+    }
+
+    input:focus, select:focus {
+      border-color: #94a3b8;
+      box-shadow: 0 0 0 3px rgba(148,163,184,.2);
+    }
+
+    .span-2 { grid-column: span 2; }
+    .span-3 { grid-column: span 3; }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 14px;
+      margin-bottom: 20px;
+    }
+
+    .metric {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 22px;
+      padding: 18px;
+      box-shadow: var(--shadow);
+    }
+
+    .metric small {
+      color: var(--muted);
+      display: block;
+      margin-bottom: 6px;
+      font-weight: 700;
+    }
+
+    .metric strong {
+      font-size: 20px;
+      display: block;
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: 1fr 330px;
+      gap: 20px;
+      align-items: start;
+    }
+
+    .day-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      padding: 18px;
+      box-shadow: var(--shadow);
+      margin-bottom: 14px;
+    }
+
+    .day-card.today {
+      border-color: #111827;
+      box-shadow: 0 0 0 3px rgba(17, 24, 39, .08), var(--shadow);
+    }
+
+    .day-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 14px;
+      flex-wrap: wrap;
+    }
+
+    .weekday {
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: .05em;
+    }
+
+    .date {
+      font-size: 24px;
+      font-weight: 900;
+      margin-top: 3px;
+    }
+
+    .badges {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    .badge {
+      display: inline-block;
+      background: #e5e7eb;
+      color: #374151;
+      border-radius: 999px;
+      padding: 7px 12px;
+      font-size: 13px;
+      font-weight: 800;
+    }
+
+    .badge.today-badge {
+      background: var(--green-soft);
+      color: #166534;
+    }
+
+    .unit {
+      background: var(--soft);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 14px;
+      margin-top: 10px;
+    }
+
+    .unit-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 12px;
+      flex-wrap: wrap;
+    }
+
+    .unit-title {
+      font-weight: 900;
+    }
+
+    .hour-pill {
+      background: white;
+      color: var(--muted);
+      border-radius: 999px;
+      padding: 6px 10px;
+      font-size: 12px;
+      font-weight: 800;
+      border: 1px solid var(--border);
+    }
+
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 9px;
+    }
+
+    .person {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 10px;
+    }
+
+    .person.off {
+      background: #f1f5f9;
+      color: var(--muted);
+    }
+
+    .person-name {
+      font-weight: 900;
+      margin-bottom: 4px;
+    }
+
+    .person-role {
+      color: var(--muted);
+      font-size: 12px;
+      margin-bottom: 7px;
+    }
+
+    .person-hour {
+      color: #475569;
+      font-size: 12px;
+      font-weight: 800;
+    }
+
+    .extra-block {
+      margin-top: 12px;
+      border: 1px solid #bbf7d0;
+      background: #f0fdf4;
+      border-radius: 18px;
+      padding: 12px;
+    }
+
+    .extra-title {
+      font-weight: 900;
+      color: #166534;
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 14px;
+    }
+
+    .extra-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 8px;
+    }
+
+    .extra-person {
+      background: white;
+      border: 1px solid #bbf7d0;
+      border-radius: 16px;
+      padding: 10px;
+    }
+
+    .extra-name {
+      font-weight: 900;
+      color: #14532d;
+      margin-bottom: 4px;
+    }
+
+    .extra-meta {
+      color: #166534;
+      font-size: 12px;
+      line-height: 1.35;
+      font-weight: 700;
+    }
+
+    .extra-list {
+      display: grid;
+      gap: 8px;
+      margin-top: 12px;
+    }
+
+    .extra-item {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 10px;
+      align-items: center;
+      border: 1px solid var(--border);
+      background: white;
+      border-radius: 16px;
+      padding: 10px;
+      font-size: 13px;
+    }
+
+    .extra-item strong {
+      display: block;
+      margin-bottom: 3px;
+    }
+
+    .extra-item span {
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.35;
+    }
+
+    .danger-small {
+      background: #fee2e2;
+      color: #991b1b;
+      padding: 7px 9px;
+      border-radius: 12px;
+      font-size: 12px;
+    }
+
+    .empty {
+      background: white;
+      border: 1px dashed #cbd5e1;
+      color: var(--muted);
+      border-radius: 14px;
+      padding: 12px;
+      font-size: 14px;
+    }
+
+    .side {
+      position: sticky;
+      top: 14px;
+      display: grid;
+      gap: 14px;
+    }
+
+    .summary {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      padding: 18px;
+      box-shadow: var(--shadow);
+    }
+
+    .summary h2 {
+      margin: 0 0 14px;
+      font-size: 22px;
+    }
+
+    .summary-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 10px;
+      margin-bottom: 8px;
+      background: white;
+      font-size: 14px;
+    }
+
+    .summary-count {
+      background: var(--soft);
+      color: var(--muted);
+      border-radius: 999px;
+      padding: 5px 8px;
+      font-size: 12px;
+      font-weight: 900;
+      white-space: nowrap;
+    }
+
+    .note {
+      background: var(--soft);
+      color: var(--muted);
+      border-radius: 16px;
+      padding: 12px;
+      font-size: 12px;
+      line-height: 1.5;
+      margin-top: 14px;
+    }
+
+    .status {
+      display: none;
+      margin-top: 14px;
+      padding: 12px;
+      border-radius: 16px;
+      font-size: 14px;
+      font-weight: 800;
+    }
+
+    .status.ok {
+      display: block;
+      background: var(--green-soft);
+      color: #166534;
+    }
+
+    .status.warn {
+      display: block;
+      background: var(--yellow-soft);
+      color: var(--yellow-text);
+    }
+
+    .view-only .admin-only {
+      display: none !important;
+    }
+
+    .public-info {
+      display: none;
+      background: var(--blue-soft);
+      color: var(--blue-text);
+      border-radius: 16px;
+      padding: 12px;
+      font-size: 14px;
+      font-weight: 700;
+      margin-bottom: 20px;
+    }
+
+    .view-only .public-info {
+      display: block;
+    }
+
+    .share-box {
+      display: grid;
+      gap: 10px;
+    }
+
+    .share-box textarea {
+      min-height: 82px;
+      resize: vertical;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 10px;
+      font-size: 12px;
+      width: 100%;
+      color: var(--text);
+    }
+
+    @media (max-width: 1000px) {
+      .controls, .cards, .layout {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .layout {
+        display: block;
+      }
+
+      .side {
+        position: static;
+        margin-top: 18px;
+      }
+
+      .team-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (max-width: 650px) {
+      .container { padding: 14px; }
+      .hero { padding: 20px; }
+      h1 { font-size: 30px; }
+      .controls, .cards { grid-template-columns: 1fr; }
+      .span-2, .span-3 { grid-column: span 1; }
+      .team-grid { grid-template-columns: 1fr; }
+      .extra-grid { grid-template-columns: 1fr; }
+      .actions { justify-content: flex-start; }
+      button { width: 100%; }
+    }
+
+    @media print {
+      body { background: white; }
+      .actions, .admin-only, .panel { display: none !important; }
+      .hero, .metric, .day-card, .summary { box-shadow: none; }
+      .layout { display: block; }
+      .side { display: none; }
+    }
+
+    /* ===== PADRÃO VISUAL CLAN / FOLHA DE PONTO ===== */
+    :root {
+      --bg: #071423;
+      --card: rgba(16, 24, 35, 0.90);
+      --text: #f4f4f4;
+      --muted: #bcc4d1;
+      --border: rgba(227, 161, 38, 0.55);
+      --soft: rgba(54, 54, 58, 0.70);
+      --dark: #3a2d20;
+      --green: #4fb978;
+      --green-soft: rgba(79, 185, 120, 0.16);
+      --blue-soft: rgba(227, 161, 38, 0.12);
+      --blue-text: #f0b24a;
+      --yellow-soft: rgba(227, 161, 38, 0.16);
+      --yellow-text: #ffcf66;
+      --shadow: 0 18px 44px rgba(0, 0, 0, 0.34);
+    }
+
+    body {
+      background:
+        radial-gradient(circle at top left, rgba(227,161,38,0.10), transparent 28%),
+        radial-gradient(circle at top right, rgba(11,47,83,0.24), transparent 34%),
+        linear-gradient(135deg, #08131e, #09213a 60%, #0a2642);
+    }
+
+    .hero {
+      background: linear-gradient(90deg, rgba(44,39,41,0.78), rgba(15,49,79,0.82));
+      border: 1px solid rgba(227,161,38,0.70);
+      box-shadow: 0 0 0 1px rgba(227,161,38,0.10), var(--shadow);
+    }
+
+    .hero small {
+      background: rgba(227,161,38,0.12);
+      color: #f0b24a;
+      border: 1px solid rgba(227,161,38,0.25);
+    }
+
+    .hero p {
+      color: #d6dde8;
+    }
+
+    .panel,
+    .metric,
+    .day-card,
+    .summary {
+      background: linear-gradient(135deg, rgba(47,40,41,0.78), rgba(12,32,52,0.88) 55%, rgba(10,40,69,0.90));
+      border: 1px solid rgba(227,161,38,0.70);
+      box-shadow: 0 0 0 1px rgba(227,161,38,0.08), 0 18px 44px rgba(0,0,0,0.34);
+    }
+
+    .panel-title,
+    .summary h2,
+    .date,
+    .unit-title,
+    .person-name,
+    .extra-name,
+    .metric strong {
+      color: #ffffff;
+    }
+
+    .weekday,
+    .metric small,
+    label,
+    .person-role,
+    .person-hour,
+    .summary-count,
+    .note,
+    .empty,
+    .extra-meta,
+    .extra-item span {
+      color: var(--muted);
+    }
+
+    h1,
+    .panel-title span,
+    .summary h2 {
+      color: #ffffff;
+    }
+
+    button {
+      background: rgba(70, 57, 49, 0.46);
+      color: #fff7e8;
+      border: 1px solid rgba(227,161,38,0.88);
+      box-shadow: inset 0 0 0 1px rgba(255,255,255,0.03);
+    }
+
+    button:hover {
+      transform: translateY(-1px);
+      border-color: #f0b24a;
+      box-shadow: 0 0 0 3px rgba(227,161,38,0.14);
+    }
+
+    button.green {
+      background: linear-gradient(180deg, rgba(79,185,120,0.32), rgba(24,109,70,0.28));
+      border-color: rgba(79,185,120,0.80);
+      color: #eafff1;
+    }
+
+    button.light,
+    button.secondary {
+      background: rgba(70, 57, 49, 0.46);
+      color: #fff7e8;
+      border: 1px solid rgba(227,161,38,0.88);
+    }
+
+    input,
+    select,
+    .share-box textarea {
+      background: rgba(54, 54, 58, 0.96);
+      color: #f4f4f4;
+      border: 1px solid rgba(227,161,38,0.42);
+    }
+
+    input::placeholder {
+      color: #aab4c2;
+    }
+
+    input:focus,
+    select:focus,
+    .share-box textarea:focus {
+      border-color: #f0b24a;
+      box-shadow: 0 0 0 3px rgba(227,161,38,.14);
+    }
+
+    .unit,
+    .person,
+    .extra-person,
+    .extra-item,
+    .summary-row,
+    .note,
+    .empty {
+      background: rgba(8, 17, 27, 0.58);
+      border: 1px solid rgba(227,161,38,0.28);
+    }
+
+    .person.off {
+      background: rgba(54,54,58,0.54);
+      color: var(--muted);
+    }
+
+    .hour-pill,
+    .badge {
+      background: rgba(227,161,38,0.10);
+      color: #f0b24a;
+      border: 1px solid rgba(227,161,38,0.25);
+    }
+
+    .badge.today-badge {
+      background: rgba(79,185,120,0.16);
+      color: #80e0a5;
+      border: 1px solid rgba(79,185,120,0.28);
+    }
+
+    .day-card.today {
+      border-color: #f0b24a;
+      box-shadow: 0 0 0 3px rgba(227,161,38,.12), var(--shadow);
+    }
+
+    .extra-block {
+      background: rgba(79,185,120,0.10);
+      border: 1px solid rgba(79,185,120,0.32);
+    }
+
+    .extra-title {
+      color: #80e0a5;
+    }
+
+    .extra-person {
+      border-color: rgba(79,185,120,0.32);
+    }
+
+    .summary-count {
+      background: rgba(227,161,38,0.12);
+      color: #f0b24a;
+      border: 1px solid rgba(227,161,38,0.18);
+    }
+
+    .public-info {
+      background: rgba(227,161,38,0.12);
+      color: #f0b24a;
+      border: 1px solid rgba(227,161,38,0.25);
+    }
+
+    .status.ok {
+      background: rgba(79,185,120,0.16);
+      color: #80e0a5;
+      border: 1px solid rgba(79,185,120,0.28);
+    }
+
+    .status.warn {
+      background: rgba(227,161,38,0.16);
+      color: #ffcf66;
+      border: 1px solid rgba(227,161,38,0.28);
+    }
+
+    .danger-small {
+      background: rgba(199,91,104,0.16);
+      color: #ff9aa6;
+      border: 1px solid rgba(199,91,104,0.45);
+    }
+
+    @media print {
+      body {
+        background: white !important;
+        color: black !important;
+      }
+
+      .hero,
+      .metric,
+      .day-card,
+      .summary,
+      .unit,
+      .person,
+      .summary-row {
+        background: white !important;
+        color: black !important;
+        border-color: #cbd5e1 !important;
+      }
+
+      .panel-title,
+      .summary h2,
+      .date,
+      .unit-title,
+      .person-name,
+      .metric strong {
+        color: black !important;
+      }
+    }
+
+  </style>
+</head>
+<body>
+  <div class="container" id="pageRoot">
+    <section class="hero">
+      <div>
+        <small>📅 Escala automática CLAN Y GAMER</small>
+        <h1>Escala de Trabalho</h1>
+        <p>
+          Página web simples para consultar a escala do dia, gerar o mês, salvar configurações e compartilhar com o time.
+        </p>
+      </div>
+
+      <div class="actions">
+        <button class="green admin-only" onclick="saveSchedule()">Salvar escala</button>
+        <button class="light admin-only" onclick="generateMonth()">Gerar escala do mês</button>
+        <button class="light admin-only" onclick="copyShareLink()">Copiar link do time</button>
+        <button class="light" onclick="window.print()">Imprimir</button>
+      </div>
+    </section>
+
+    <div class="public-info">
+      Modo visualização do time. Os controles de edição ficam ocultos, mas a consulta por funcionário continua disponível.
+    </div>
+
+    <section class="panel admin-only">
+      <div class="panel-title">
+        <span>Configurações da escala</span>
+        <button class="secondary" onclick="resetDefaults()">Restaurar padrão</button>
+      </div>
+
+      <div class="controls">
+        <label>
+          Mês
+          <select id="month" onchange="handleMonthChange()"></select>
+        </label>
+
+        <label>
+          Ano
+          <input id="year" type="number" onchange="handleYearChange()" />
+        </label>
+
+        <label class="span-2">
+          Data de referência 12x36
+          <input id="referenceDate" type="date" onchange="render()" />
+        </label>
+
+        <label class="span-2">
+          Auxiliar Técnico de Referência
+          <select id="referenceTech" onchange="render()">
+            <option>Hannyel Miranda</option>
+            <option>Luan Vinicius</option>
+          </select>
+        </label>
+
+        <label class="span-2">
+          Domingo de folga do Felipe
+          <select id="felipeOffSunday" onchange="render()"></select>
+        </label>
+
+        <label class="span-2">
+          Visualizar unidade
+          <select id="unitFilter" onchange="render()">
+            <option>Todas</option>
+            <option>Sumaúma</option>
+            <option>Adrianópolis</option>
+          </select>
+        </label>
+
+        <label class="span-2">
+          Visualizar período
+          <select id="displayMode" onchange="render()">
+            <option>Hoje</option>
+            <option>Próximos 7 dias</option>
+            <option>Mês completo</option>
+            <option>Dias anteriores</option>
+          </select>
+        </label>
+
+        <label class="span-2">
+          Buscar funcionário
+          <input id="searchAdmin" type="text" placeholder="Ex.: Hannyel, Felipe, Rayane..." oninput="syncSearchFromAdmin()" />
+        </label>
+      </div>
+
+      <div id="status" class="status"></div>
+    </section>
+
+    <section class="panel admin-only">
+      <div class="panel-title">
+        <span>Cobertura / Hora Extra</span>
+      </div>
+
+      <div class="controls">
+        <label>
+          Data
+          <input id="extraDate" type="date" />
+        </label>
+
+        <label>
+          Unidade
+          <select id="extraUnit">
+            <option>Sumaúma</option>
+            <option>Adrianópolis</option>
+          </select>
+        </label>
+
+        <label class="span-2">
+          Funcionário
+          <select id="extraPerson">
+            <option>Hannyel Miranda</option>
+            <option>Luan Vinicius</option>
+            <option>Felipe Rodrigues</option>
+            <option>Rayane Cristina</option>
+            <option>Thayna Gama</option>
+            <option>Rodrigo Prestes</option>
+            <option>Tônia</option>
+          </select>
+        </label>
+
+        <label>
+          Horário
+          <input id="extraHours" type="text" placeholder="Ex.: 14h às 22h" />
+        </label>
+
+        <label>
+          Motivo
+          <select id="extraReason">
+            <option>Cobertura de falta</option>
+            <option>Domingo de folga do Felipe</option>
+            <option>Reforço na segunda-feira</option>
+            <option>Demanda extra</option>
+            <option>Outro</option>
+          </select>
+        </label>
+      </div>
+
+      <div class="actions" style="margin-top: 14px; justify-content: flex-start;">
+        <button class="green" onclick="addOvertime()">Adicionar cobertura</button>
+        <button class="secondary" onclick="clearOvertimeForm()">Limpar campos</button>
+      </div>
+
+      <div id="overtimeList" class="extra-list"></div>
+    </section>
+
+    <section class="panel">
+      <div class="panel-title">
+        <span>Consulta rápida</span>
+      </div>
+
+      <div class="controls">
+        <label class="span-2">
+          Buscar funcionário
+          <input id="searchPublic" type="text" placeholder="Digite o nome do funcionário..." oninput="syncSearchFromPublic()" />
+        </label>
+
+        <label class="span-2">
+          Filtrar unidade
+          <select id="unitFilterPublic" onchange="syncUnitFromPublic()">
+            <option>Todas</option>
+            <option>Sumaúma</option>
+            <option>Adrianópolis</option>
+          </select>
+        </label>
+
+        <label class="span-2">
+          Visualizar período
+          <select id="displayModePublic" onchange="syncDisplayModeFromPublic()">
+            <option>Hoje</option>
+            <option>Próximos 7 dias</option>
+            <option>Mês completo</option>
+            <option>Dias anteriores</option>
+          </select>
+        </label>
+      </div>
+    </section>
+
+    <section class="cards">
+      <div class="metric">
+        <small>Período</small>
+        <strong id="periodMetric">-</strong>
+      </div>
+
+      <div class="metric">
+        <small>Referência 12x36</small>
+        <strong id="referenceMetric">-</strong>
+      </div>
+
+      <div class="metric">
+        <small>Folga Felipe</small>
+        <strong id="felipeMetric">-</strong>
+      </div>
+
+      <div class="metric">
+        <small>Dias no mês</small>
+        <strong id="daysMetric">-</strong>
+      </div>
+    </section>
+
+    <main class="layout">
+      <div id="schedule"></div>
+
+      <aside class="side">
+        <section class="summary">
+          <h2>Resumo do mês</h2>
+          <div id="summary"></div>
+          <div class="note">
+            O resumo conta dias escalados. Não calcula banco de horas nem total exato de horas trabalhadas.
+          </div>
+        </section>
+
+
+      </aside>
+    </main>
+  </div>
+
+  <script>
+    const STORAGE_KEY = "clanEscalaConfigV2";
+
+    const MONTHS = [
+      "Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho",
+      "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"
+    ];
+
+    const WEEKDAYS = ["Dom", "Seg", "Ter", "Qua", "Qui", "Sex", "Sáb"];
+    const TECHS = ["Hannyel Miranda", "Luan Vinicius"];
+
+    const DEFAULT_CONFIG = {
+      month: 3,
+      year: 2026,
+      referenceDate: "2026-04-25",
+      referenceTech: "Hannyel Miranda",
+      felipeOffSunday: "2026-04-26",
+      unitFilter: "Todas",
+      displayMode: "Hoje",
+      search: "",
+      overtime: []
+    };
+
+    function pad(value) {
+      return String(value).padStart(2, "0");
+    }
+
+    function toISODate(date) {
+      return `${date.getFullYear()}-${pad(date.getMonth() + 1)}-${pad(date.getDate())}`;
+    }
+
+    function toBRDate(date) {
+      return `${pad(date.getDate())}/${pad(date.getMonth() + 1)}/${date.getFullYear()}`;
+    }
+
+    function parseISODate(value) {
+      const [year, month, day] = value.split("-").map(Number);
+      return new Date(year, month - 1, day);
+    }
+
+    function diffDays(dateA, dateB) {
+      const oneDay = 24 * 60 * 60 * 1000;
+      const a = new Date(dateA.getFullYear(), dateA.getMonth(), dateA.getDate());
+      const b = new Date(dateB.getFullYear(), dateB.getMonth(), dateB.getDate());
+      return Math.round((a - b) / oneDay);
+    }
+
+    function getDaysInMonth(year, monthIndex) {
+      const total = new Date(year, monthIndex + 1, 0).getDate();
+      return Array.from({ length: total }, (_, index) => new Date(year, monthIndex, index + 1));
+    }
+
+    function isSunday(date) { return date.getDay() === 0; }
+    function isSaturday(date) { return date.getDay() === 6; }
+    function isWeekday(date) { return date.getDay() >= 1 && date.getDay() <= 5; }
+
+    function getTodayISO() {
+      const now = new Date();
+      return toISODate(now);
+    }
+
+    function getTechnicalShift(date, referenceDate, referenceTech) {
+      const days = diffDays(date, referenceDate);
+      const normalized = ((days % 2) + 2) % 2;
+      const referenceIndex = TECHS.indexOf(referenceTech);
+      const techIndex = normalized === 0 ? referenceIndex : 1 - referenceIndex;
+      return TECHS[techIndex];
+    }
+
+    function getStoreHours(unit, date) {
+      if (unit === "Sumaúma") {
+        return isSunday(date) ? "14h às 21h" : "10h às 22h";
+      }
+
+      return isSunday(date) ? "Fechado" : "9h às 17h20";
+    }
+
+    function getSumaumaTeam(date, referenceDate, referenceTech, felipeOffSunday) {
+      const team = [];
+      const day = date.getDay();
+      const dateIso = toISODate(date);
+      const felipeWorksToday = day >= 2 && day <= 6 || day === 0;
+      const felipeOffToday = dateIso === felipeOffSunday;
+
+      team.push({
+        name: getTechnicalShift(date, referenceDate, referenceTech),
+        role: "Auxiliar Técnico 12x36",
+        hours: isSunday(date) ? "14h às 21h" : "10h às 22h"
+      });
+
+      if (felipeWorksToday && !felipeOffToday) {
+        team.push({
+          name: "Felipe Rodrigues",
+          role: "Vendedor",
+          hours: isSunday(date) ? "14h às 21h" : "14h às 22h"
+        });
+      }
+
+      if (felipeOffToday) {
+        team.push({
+          name: "Felipe Rodrigues",
+          role: "Vendedor",
+          hours: "Folga de domingo"
+        });
+      }
+
+      if (isWeekday(date)) {
+        team.push({
+          name: "Tônia",
+          role: "Apoio",
+          hours: "10h às 14h"
+        });
+      }
+
+      return team;
+    }
+
+    function getAdrianopolisTeam(date) {
+      if (isSunday(date)) {
+        return [];
+      }
+
+      return [
+        { name: "Rayane Cristina", role: "Vendedora", hours: "9h às 17h20" },
+        { name: "Thayna Gama", role: "Auxiliar Técnico", hours: "9h às 17h20" },
+        { name: "Rodrigo Prestes", role: "Auxiliar Técnico", hours: "9h às 17h20" }
+      ];
+    }
+
+    function getOvertimeFor(dateIso, unitName) {
+      return (window.clanOvertime || []).filter(item => item.date === dateIso && item.unit === unitName);
+    }
+
+    function getPersonDefaultRole(name) {
+      const roles = {
+        "Hannyel Miranda": "Auxiliar Técnico",
+        "Luan Vinicius": "Auxiliar Técnico",
+        "Thayna Gama": "Auxiliar Técnico",
+        "Rodrigo Prestes": "Auxiliar Técnico",
+        "Felipe Rodrigues": "Vendedor",
+        "Rayane Cristina": "Vendedora",
+        "Tônia": "Apoio"
+      };
+
+      return roles[name] || "Cobertura";
+    }
+
+    function addOvertime() {
+      const date = document.getElementById("extraDate").value;
+      const unit = document.getElementById("extraUnit").value;
+      const person = document.getElementById("extraPerson").value;
+      const hours = document.getElementById("extraHours").value.trim();
+      const reason = document.getElementById("extraReason").value;
+
+      if (!date || !person || !hours) {
+        showStatus("Preencha data, funcionário e horário da cobertura.", "warn");
+        return;
+      }
+
+      const item = {
+        id: `${Date.now()}-${Math.random().toString(16).slice(2)}`,
+        date,
+        unit,
+        person,
+        role: getPersonDefaultRole(person),
+        hours,
+        reason
+      };
+
+      window.clanOvertime = [...(window.clanOvertime || []), item];
+      saveSchedule();
+      clearOvertimeForm(false);
+      render();
+      showStatus("Cobertura / hora extra adicionada com sucesso.", "ok");
+    }
+
+    function removeOvertime(id) {
+      window.clanOvertime = (window.clanOvertime || []).filter(item => item.id !== id);
+      saveSchedule();
+      render();
+      showStatus("Cobertura removida.", "ok");
+    }
+
+    function clearOvertimeForm(clearDate = true) {
+      if (clearDate) document.getElementById("extraDate").value = "";
+      document.getElementById("extraHours").value = "";
+      document.getElementById("extraReason").value = "Cobertura de falta";
+    }
+
+    function renderOvertimeList() {
+      const list = document.getElementById("overtimeList");
+      if (!list) return;
+
+      const items = [...(window.clanOvertime || [])].sort((a, b) => `${a.date}${a.unit}`.localeCompare(`${b.date}${b.unit}`));
+
+      if (!items.length) {
+        list.innerHTML = "<div class='empty'>Nenhuma cobertura ou hora extra cadastrada para este mês.</div>";
+        return;
+      }
+
+      list.innerHTML = items.map(item => {
+        const date = item.date ? toBRDate(parseISODate(item.date)) : "-";
+        return `
+          <div class="extra-item">
+            <div>
+              <strong>${date} — ${item.unit}</strong>
+              <span>${item.person} • ${item.role} • ${item.hours}<br>${item.reason}</span>
+            </div>
+            <button class="danger-small" onclick="removeOvertime('${item.id}')">Remover</button>
+          </div>
+        `;
+      }).join("");
+    }
+
+    function buildSchedule() {
+      const config = getCurrentConfig();
+      const referenceDate = parseISODate(config.referenceDate);
+
+      return getDaysInMonth(config.year, config.month).map(date => ({
+        date,
+        iso: toISODate(date),
+        br: toBRDate(date),
+        weekday: WEEKDAYS[date.getDay()],
+        units: [
+          {
+            unit: "Sumaúma",
+            hours: getStoreHours("Sumaúma", date),
+            team: getSumaumaTeam(date, referenceDate, config.referenceTech, config.felipeOffSunday),
+            overtime: getOvertimeFor(toISODate(date), "Sumaúma")
+          },
+          {
+            unit: "Adrianópolis",
+            hours: getStoreHours("Adrianópolis", date),
+            team: getAdrianopolisTeam(date),
+            overtime: getOvertimeFor(toISODate(date), "Adrianópolis")
+          }
+        ]
+      }));
+    }
+
+    function getMonthSundays(year, monthIndex) {
+      return getDaysInMonth(year, monthIndex).filter(isSunday);
+    }
+
+    function firstSundayOfMonth(year, monthIndex) {
+      const sundays = getMonthSundays(year, monthIndex);
+      return sundays[0] ? toISODate(sundays[0]) : "";
+    }
+
+    function updateSundayOptions(selectedValue) {
+      const year = Number(document.getElementById("year").value);
+      const monthIndex = Number(document.getElementById("month").value);
+      const select = document.getElementById("felipeOffSunday");
+      const sundays = getMonthSundays(year, monthIndex);
+
+      select.innerHTML = "";
+
+      sundays.forEach(date => {
+        const option = document.createElement("option");
+        option.value = toISODate(date);
+        option.textContent = toBRDate(date);
+        select.appendChild(option);
+      });
+
+      const values = sundays.map(toISODate);
+
+      if (selectedValue && values.includes(selectedValue)) {
+        select.value = selectedValue;
+      } else {
+        select.value = firstSundayOfMonth(year, monthIndex);
+      }
+    }
+
+    function getCurrentConfig() {
+      return {
+        month: Number(document.getElementById("month").value),
+        year: Number(document.getElementById("year").value),
+        referenceDate: document.getElementById("referenceDate").value,
+        referenceTech: document.getElementById("referenceTech").value,
+        felipeOffSunday: document.getElementById("felipeOffSunday").value,
+        unitFilter: document.getElementById("unitFilter").value,
+        displayMode: document.getElementById("displayMode").value,
+        search: document.getElementById("searchPublic").value.trim(),
+        overtime: window.clanOvertime || []
+      };
+    }
+
+    function setConfig(config) {
+      document.getElementById("month").value = String(config.month);
+      document.getElementById("year").value = String(config.year);
+      document.getElementById("referenceDate").value = config.referenceDate;
+      document.getElementById("referenceTech").value = config.referenceTech;
+      updateSundayOptions(config.felipeOffSunday);
+      document.getElementById("felipeOffSunday").value = config.felipeOffSunday;
+      document.getElementById("unitFilter").value = config.unitFilter || "Todas";
+      document.getElementById("unitFilterPublic").value = config.unitFilter || "Todas";
+      document.getElementById("displayMode").value = config.displayMode || "Hoje";
+      document.getElementById("displayModePublic").value = config.displayMode || "Hoje";
+      document.getElementById("searchAdmin").value = config.search || "";
+      document.getElementById("searchPublic").value = config.search || "";
+      window.clanOvertime = Array.isArray(config.overtime) ? config.overtime : [];
+    }
+
+    function saveSchedule() {
+      const config = getCurrentConfig();
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(config));
+      showStatus("Escala salva neste navegador com sucesso.", "ok");
+      updateShareLink();
+      render();
+    }
+
+    function encodeOvertime(overtime) {
+      try {
+        const json = JSON.stringify(overtime || []);
+        return btoa(unescape(encodeURIComponent(json))).replaceAll("+", "-").replaceAll("/", "_").replaceAll("=", "");
+      } catch {
+        return "";
+      }
+    }
+
+    function decodeOvertime(value) {
+      if (!value) return [];
+      try {
+        let base64 = value.replaceAll("-", "+").replaceAll("_", "/");
+        while (base64.length % 4) base64 += "=";
+        const json = decodeURIComponent(escape(atob(base64)));
+        const parsed = JSON.parse(json);
+        return Array.isArray(parsed) ? parsed : [];
+      } catch {
+        return [];
+      }
+    }
+
+    function getSavedOvertime() {
+      const raw = localStorage.getItem(STORAGE_KEY);
+      if (!raw) return [];
+      try {
+        const parsed = JSON.parse(raw);
+        return Array.isArray(parsed.overtime) ? parsed.overtime : [];
+      } catch {
+        return [];
+      }
+    }
+
+    function loadSavedConfig() {
+      const params = new URLSearchParams(window.location.search);
+      const fromUrl = {
+        month: params.has("m") ? Number(params.get("m")) : null,
+        year: params.has("y") ? Number(params.get("y")) : null,
+        referenceDate: params.get("ref"),
+        referenceTech: params.get("tech"),
+        felipeOffSunday: params.get("folga"),
+        unitFilter: params.get("unit") || "Todas",
+        displayMode: params.get("modo") || "Hoje",
+        search: "",
+        overtime: decodeOvertime(params.get("extras"))
+      };
+
+      if (fromUrl.month !== null && fromUrl.year && fromUrl.referenceDate && fromUrl.referenceTech && fromUrl.felipeOffSunday) {
+        return {
+          ...DEFAULT_CONFIG,
+          ...fromUrl
+        };
+      }
+
+      const saved = localStorage.getItem(STORAGE_KEY);
+      if (!saved) return DEFAULT_CONFIG;
+
+      try {
+        return { ...DEFAULT_CONFIG, ...JSON.parse(saved) };
+      } catch {
+        return DEFAULT_CONFIG;
+      }
+    }
+
+    function generateMonth() {
+      const year = Number(document.getElementById("year").value);
+      const month = Number(document.getElementById("month").value);
+      updateSundayOptions(document.getElementById("felipeOffSunday").value || firstSundayOfMonth(year, month));
+      render();
+      showStatus("Escala do mês gerada na tela. Clique em Salvar escala para manter esta configuração no navegador.", "warn");
+    }
+
+    function handleMonthChange() {
+      const year = Number(document.getElementById("year").value);
+      const month = Number(document.getElementById("month").value);
+      updateSundayOptions(firstSundayOfMonth(year, month));
+      render();
+    }
+
+    function handleYearChange() {
+      const year = Number(document.getElementById("year").value);
+      const month = Number(document.getElementById("month").value);
+      updateSundayOptions(firstSundayOfMonth(year, month));
+      render();
+    }
+
+    function resetDefaults() {
+      setConfig(DEFAULT_CONFIG);
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(DEFAULT_CONFIG));
+      showStatus("Configuração padrão restaurada.", "ok");
+      render();
+    }
+
+    function getDaysBetween(dateA, dateB) {
+      return diffDays(dateA, dateB);
+    }
+
+    function filterByDisplayMode(schedule, displayMode) {
+      if (displayMode === "Mês completo") return schedule;
+
+      const today = parseISODate(getTodayISO());
+      const todayMonth = today.getMonth();
+      const todayYear = today.getFullYear();
+
+      return schedule.filter(day => {
+        const delta = getDaysBetween(day.date, today);
+
+        if (displayMode === "Hoje") {
+          return day.iso === getTodayISO();
+        }
+
+        if (displayMode === "Próximos 7 dias") {
+          return delta >= 0 && delta <= 6;
+        }
+
+        if (displayMode === "Dias anteriores") {
+          return delta < 0;
+        }
+
+        return true;
+      });
+    }
+
+    function getFilteredSchedule(schedule) {
+      const config = getCurrentConfig();
+      const search = config.search.toLowerCase();
+      const baseSchedule = filterByDisplayMode(schedule, config.displayMode);
+
+      return baseSchedule
+        .map(day => ({
+          ...day,
+          units: day.units
+            .filter(unit => config.unitFilter === "Todas" || unit.unit === config.unitFilter)
+            .map(unit => ({
+              ...unit,
+              team: search
+                ? unit.team.filter(person => `${person.name} ${person.role} ${person.hours}`.toLowerCase().includes(search))
+                : unit.team,
+              overtime: search
+                ? (unit.overtime || []).filter(item => `${item.person} ${item.role} ${item.hours} ${item.reason}`.toLowerCase().includes(search))
+                : (unit.overtime || [])
+            }))
+            .filter(unit => !search || unit.team.length > 0 || (unit.overtime || []).length > 0)
+        }))
+        .filter(day => day.units.length > 0);
+    }
+
+    function personHTML(person) {
+      const off = person.hours.toLowerCase().includes("folga");
+      return `
+        <div class="person ${off ? "off" : ""}">
+          <div class="person-name">${person.name}</div>
+          <div class="person-role">${person.role}</div>
+          <div class="person-hour">🕒 ${person.hours}</div>
+        </div>
+      `;
+    }
+
+    function overtimeHTML(items) {
+      if (!items || !items.length) return "";
+
+      return `
+        <div class="extra-block">
+          <div class="extra-title">🟢 Cobertura / Hora Extra</div>
+          <div class="extra-grid">
+            ${items.map(item => `
+              <div class="extra-person">
+                <div class="extra-name">${item.person}</div>
+                <div class="extra-meta">${item.role} • ${item.hours}<br>${item.reason}</div>
+              </div>
+            `).join("")}
+          </div>
+        </div>
+      `;
+    }
+
+    function unitHTML(unit) {
+      const team = unit.team.length
+        ? `<div class="team-grid">${unit.team.map(personHTML).join("")}</div>`
+        : `<div class="empty">Fechado / sem escala</div>`;
+
+      return `
+        <div class="unit">
+          <div class="unit-head">
+            <div class="unit-title">🏬 ${unit.unit}</div>
+            <div class="hour-pill">${unit.hours}</div>
+          </div>
+          ${team}
+          ${overtimeHTML(unit.overtime)}
+        </div>
+      `;
+    }
+
+    function dayHTML(day) {
+      const todayISO = getTodayISO();
+      const isToday = day.iso === todayISO;
+
+      const badges = [
+        isToday ? `<span class="badge today-badge">Hoje</span>` : "",
+        isSunday(day.date) ? `<span class="badge">Domingo</span>` : "",
+        isSaturday(day.date) ? `<span class="badge">Sábado</span>` : ""
+      ].filter(Boolean).join("");
+
+      return `
+        <article class="day-card ${isToday ? "today" : ""}">
+          <div class="day-head">
+            <div>
+              <div class="weekday">${day.weekday}</div>
+              <div class="date">${day.br}</div>
+            </div>
+            <div class="badges">${badges}</div>
+          </div>
+          ${day.units.map(unitHTML).join("")}
+        </article>
+      `;
+    }
+
+    function updateMetrics(schedule) {
+      const config = getCurrentConfig();
+      const referenceDate = parseISODate(config.referenceDate);
+      document.getElementById("periodMetric").textContent = `${MONTHS[config.month]} / ${config.year}`;
+      document.getElementById("referenceMetric").textContent = `${toBRDate(referenceDate)} — ${config.referenceTech}`;
+      document.getElementById("felipeMetric").textContent = config.felipeOffSunday ? toBRDate(parseISODate(config.felipeOffSunday)) : "-";
+      document.getElementById("daysMetric").textContent = schedule.length;
+    }
+
+    function updateSummary(schedule) {
+      const counts = {};
+
+      schedule.forEach(day => {
+        day.units.forEach(unit => {
+          unit.team.forEach(person => {
+            if (person.hours.toLowerCase().includes("folga")) return;
+            counts[person.name] = (counts[person.name] || 0) + 1;
+          });
+
+          (unit.overtime || []).forEach(item => {
+            const key = `${item.person} (HE)`;
+            counts[key] = (counts[key] || 0) + 1;
+          });
+        });
+      });
+
+      const rows = Object.entries(counts)
+        .sort((a, b) => a[0].localeCompare(b[0]))
+        .map(([name, count]) => `
+          <div class="summary-row">
+            <strong>${name}</strong>
+            <span class="summary-count">${count} dia(s)</span>
+          </div>
+        `)
+        .join("");
+
+      document.getElementById("summary").innerHTML = rows || "<div class='empty'>Nenhum resultado.</div>";
+    }
+
+    function render() {
+      const schedule = buildSchedule();
+      const filtered = getFilteredSchedule(schedule);
+
+      document.getElementById("schedule").innerHTML = filtered.map(dayHTML).join("") || "<div class='empty'>Nenhum resultado encontrado para este período. Altere o filtro de visualização para Mês completo ou Dias anteriores.</div>";
+
+      updateMetrics(schedule);
+      updateSummary(schedule);
+      renderOvertimeList();
+      updateShareLink();
+    }
+
+    function showStatus(message, type) {
+      const status = document.getElementById("status");
+      status.textContent = message;
+      status.className = `status ${type}`;
+      setTimeout(() => {
+        status.className = "status";
+      }, 5000);
+    }
+
+    function syncSearchFromAdmin() {
+      document.getElementById("searchPublic").value = document.getElementById("searchAdmin").value;
+      render();
+    }
+
+    function syncSearchFromPublic() {
+      document.getElementById("searchAdmin").value = document.getElementById("searchPublic").value;
+      render();
+    }
+
+    function syncUnitFromPublic() {
+      document.getElementById("unitFilter").value = document.getElementById("unitFilterPublic").value;
+      render();
+    }
+
+    function syncDisplayModeFromPublic() {
+      document.getElementById("displayMode").value = document.getElementById("displayModePublic").value;
+      render();
+    }
+
+    function updateShareLink() {
+      const config = getCurrentConfig();
+      const url = new URL(window.location.href);
+      url.searchParams.set("view", "1");
+      url.searchParams.set("m", String(config.month));
+      url.searchParams.set("y", String(config.year));
+      url.searchParams.set("ref", config.referenceDate);
+      url.searchParams.set("tech", config.referenceTech);
+      url.searchParams.set("folga", config.felipeOffSunday);
+      url.searchParams.set("unit", config.unitFilter);
+      url.searchParams.set("modo", config.displayMode);
+      url.searchParams.set("extras", encodeOvertime(config.overtime));
+
+      const shareLinkField = document.getElementById("shareLink");
+      if (shareLinkField) {
+        shareLinkField.value = url.toString();
+      }
+    }
+
+    async function copyShareLink() {
+      updateShareLink();
+      const config = getCurrentConfig();
+      const url = new URL(window.location.href);
+      url.searchParams.set("view", "1");
+      url.searchParams.set("m", String(config.month));
+      url.searchParams.set("y", String(config.year));
+      url.searchParams.set("ref", config.referenceDate);
+      url.searchParams.set("tech", config.referenceTech);
+      url.searchParams.set("folga", config.felipeOffSunday);
+      url.searchParams.set("unit", config.unitFilter);
+      url.searchParams.set("modo", config.displayMode);
+      url.searchParams.set("extras", encodeOvertime(config.overtime));
+      const link = url.toString();
+
+      try {
+        await navigator.clipboard.writeText(link);
+        showStatus("Link de visualização copiado.", "ok");
+      } catch {
+        prompt("Copie o link abaixo:", link);
+        showStatus("Copie o link exibido na janela.", "warn");
+      }
+    }
+
+    function exportCSV() {
+      const schedule = buildSchedule();
+      const config = getCurrentConfig();
+      const rows = [["Data", "Dia", "Unidade", "Funcionário", "Função", "Horário"]];
+
+      schedule.forEach(day => {
+        day.units
+          .filter(unit => config.unitFilter === "Todas" || unit.unit === config.unitFilter)
+          .forEach(unit => {
+            if (unit.team.length === 0) {
+              rows.push([day.br, day.weekday, unit.unit, "Fechado", "-", unit.hours]);
+            } else {
+              unit.team.forEach(person => rows.push([day.br, day.weekday, unit.unit, person.name, person.role, person.hours]));
+            }
+          });
+      });
+
+      const csv = rows.map(row => row.map(cell => `"${String(cell).replaceAll('"', '""')}"`).join(";")).join("\n");
+      const blob = new Blob([csv], { type: "text/csv;charset=utf-8;" });
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement("a");
+
+      link.href = url;
+      link.download = "escala-clan-y-gamer.csv";
+      link.click();
+
+      URL.revokeObjectURL(url);
+    }
+
+    function initMonthOptions() {
+      const monthSelect = document.getElementById("month");
+      monthSelect.innerHTML = "";
+      MONTHS.forEach((month, index) => {
+        const option = document.createElement("option");
+        option.value = index;
+        option.textContent = month;
+        monthSelect.appendChild(option);
+      });
+    }
+
+    function init() {
+      initMonthOptions();
+
+      const config = loadSavedConfig();
+      setConfig(config);
+      const extraDateField = document.getElementById("extraDate");
+      if (extraDateField && !extraDateField.value) {
+        extraDateField.value = getTodayISO();
+      }
+
+      const params = new URLSearchParams(window.location.search);
+      if (params.get("view") === "1") {
+        document.body.classList.add("view-only");
+      }
+
+      render();
+    }
+
+    init();
+  </script>
+</body>
+</html>
